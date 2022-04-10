@@ -12,6 +12,7 @@ import {TodoListItem} from "../../../classes/todo-list-item";
 export class TodoPopupComponent {
 
   todoForm: FormGroup;
+  popupType = 'Create';
 
   get title(): FormControl {
     return this.todoForm.get('title') as FormControl
@@ -30,6 +31,10 @@ export class TodoPopupComponent {
     });
     this.title.patchValue(this.data.title);
     this.description.patchValue(this.data.description);
+
+    if (this.data instanceof TodoListItem) {
+      this.popupType = 'Update';
+    }
   }
 
 
