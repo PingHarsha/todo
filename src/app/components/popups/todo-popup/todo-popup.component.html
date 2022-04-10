@@ -1,0 +1,13 @@
+<section class="create-todo-section">
+  <form [formGroup]="todoForm" class="todo-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput type="text" formControlName="title" placeholder="Hello World!">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"
+                placeholder="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."></textarea>
+    </mat-form-field>
+  </form>
+</section>

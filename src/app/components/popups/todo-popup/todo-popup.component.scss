@@ -1,0 +1,9 @@
+.create-todo-section {
+  position: relative;
+
+  .todo-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
