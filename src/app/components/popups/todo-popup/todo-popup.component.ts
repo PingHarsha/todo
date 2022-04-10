@@ -2,6 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {TodoItem} from "../../../classes/todo-item";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {TodoListItem} from "../../../classes/todo-list-item";
 
 @Component({
   selector: 'app-todo-popup',
@@ -21,7 +22,7 @@ export class TodoPopupComponent {
   }
 
   constructor(private dialogRef: MatDialogRef<TodoPopupComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: TodoItem,
+              @Inject(MAT_DIALOG_DATA) public data: TodoItem | TodoListItem,
               private readonly fb: FormBuilder) {
     this.todoForm = this.fb.group({
       title: ['', Validators.required],
@@ -32,5 +33,13 @@ export class TodoPopupComponent {
   }
 
 
+  close() {
+    this.dialogRef.close();
+  }
 
+  save() {
+    this.data.title = this.title.value;
+    this.data.description = this.description.value;
+    this.dialogRef.close(this.data);
+  }
 }

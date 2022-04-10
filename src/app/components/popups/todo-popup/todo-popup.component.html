@@ -1,4 +1,4 @@
-<section class="create-todo-section">
+<section class="todo-section">
   <form [formGroup]="todoForm" class="todo-form">
     <mat-form-field appearance="outline">
       <mat-label>Title</mat-label>
@@ -10,4 +10,10 @@
                 placeholder="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."></textarea>
     </mat-form-field>
   </form>
+  <div class="todo-footer">
+    <button (click)="close()" class="todo-button" color="warn" mat-button mat-stroked-button>Cancel</button>
+    <button (click)="save()" [disabled]="todoForm.invalid" class="todo-button" color="accent" mat-button
+            mat-raised-button>Save
+    </button>
+  </div>
 </section>

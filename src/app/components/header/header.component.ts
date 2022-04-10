@@ -14,6 +14,12 @@ export class HeaderComponent {
   }
 
   createTodo(): void {
-    this.dialog.open(TodoPopupComponent, {data: new TodoItem('', ''), maxWidth: '500px', width: '100%'});
+    this.dialog.open(TodoPopupComponent, {
+      data: new TodoItem('', ''),
+      maxWidth: '500px',
+      width: '100%',
+      closeOnNavigation: true,
+      disableClose: true
+    });
   }
 }
