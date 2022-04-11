@@ -1,7 +1,18 @@
 <section class="todo-list">
   <ng-container *ngFor="let todo of todoList | async">
     <mat-card class="todo-item">
-      <mat-card-title>{{todo.title}}</mat-card-title>
+      <mat-card-header>
+        <mat-card-title>{{todo.title}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          {{todo.description}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-button mat-stroked-button color="primary" (click)="editTodo(todo)">Update</button>
+        <button mat-button mat-stroked-button  color="warn" (click)="deleteTodo(todo.id)">Delete</button>
+      </mat-card-actions>
     </mat-card>
   </ng-container>
 </section>

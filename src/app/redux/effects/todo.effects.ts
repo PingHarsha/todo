@@ -76,7 +76,7 @@ export class TodoEffects {
     this.actions$.pipe(
       ofType(TodoActions.todoUpdate.type),
       exhaustMap((action: any) =>
-        this.todoService.updateTodoById(action.data.id, action.data).pipe(
+        this.todoService.updateTodoById(action.id, action.data).pipe(
           this.toast.observe(
             {
               loading: 'updating...',
@@ -84,7 +84,7 @@ export class TodoEffects {
               error: (e) => `Something did not work, reason: ${e}`,
             }
           ),
-          map((data: TodoListItem) => TodoActions.todoCreate({data})),
+          map((data: TodoListItem) => TodoActions.todoAddItem({data})),
           catchError(err => of(TodoActions.failedUpdateTodo({data: err})))
         )
       )

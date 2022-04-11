@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {getAllTodos} from "../../redux/selectors/todo.selectors";
-import {todoDeleteTodo, todoGetAll} from "../../redux/actions/todo.actions";
+import {todoDeleteTodo, todoGetAll, todoUpdate} from "../../redux/actions/todo.actions";
 import {Observable} from "rxjs";
 import {TodoListItem} from "../../classes/todo-list-item";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmationPopupComponent} from "../popups/confirmation-popup/confirmation-popup.component";
 import {TodoPopupComponent} from "../popups/todo-popup/todo-popup.component";
+import {TodoItem} from "../../classes/todo-item";
 
 @Component({
   selector: 'app-todo-list',
@@ -24,9 +25,15 @@ export class TodoListComponent implements OnInit {
     this.store.dispatch(todoGetAll());
   }
 
-  editTodo(todo: TodoListItem) {
-    const popup = this.dialog.open(TodoPopupComponent);
-
+  editTodo(todo: TodoListItem): void {
+    const popup = this.dialog.open(TodoPopupComponent, {
+      data: todo
+    });
+    popup.afterClosed().subscribe((data: TodoListItem) => {
+      if (data) {
+        this.store.dispatch(todoUpdate({data: new TodoItem(data.title, data.description), id: data.id}));
+      }
+    })
   }
 
   deleteTodo(id: number): void {

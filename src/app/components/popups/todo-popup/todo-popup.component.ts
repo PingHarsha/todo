@@ -38,13 +38,12 @@ export class TodoPopupComponent {
   }
 
 
-  close() {
-    this.dialogRef.close();
-  }
+  close = (): void => this.dialogRef.close();
 
-  save() {
-    this.data.title = this.title.value;
-    this.data.description = this.description.value;
-    this.dialogRef.close(this.data);
+  save(): void {
+    const todo = {...this.data};
+    todo.title = this.title.value;
+    todo.description = this.description.value;
+    this.dialogRef.close(todo);
   }
 }
