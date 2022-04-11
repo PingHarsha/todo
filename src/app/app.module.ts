@@ -20,6 +20,7 @@ import {DynamicViewModule} from "@ngneat/overview";
 import {ConfirmationPopupComponent} from './components/popups/confirmation-popup/confirmation-popup.component';
 import {MAT_DIALOG_DEFAULT_OPTIONS} from "@angular/material/dialog";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {EllipsisModule} from "ngx-ellipsis";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
       position: 'bottom-right'
     }),
     DynamicViewModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    EllipsisModule
   ],
   providers: [{
     provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {

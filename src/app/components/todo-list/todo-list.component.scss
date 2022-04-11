@@ -3,7 +3,7 @@
 
 
 @function calcWidth($val) {
-  @return calc(calc(100%/#{$val}) - 48px);
+  @return calc(calc(100% / #{$val}) - 48px);
 }
 
 
@@ -30,6 +30,20 @@
 
     @media (min-width: variables.getLayout('desktop')) {
       width: calcWidth(4);
+    }
+
+    .title {
+      margin-left: -16px;
+      .ngx-ellipsis-inner {
+        height: 50px;
+      }
+    }
+
+    .todo-description {
+      .ngx-ellipsis-inner {
+        height: 100px;
+        width: 100%;
+      }
     }
   }
 }
