@@ -22,7 +22,7 @@ export class TodoPopupComponent {
     return this.todoForm.get('description') as FormControl
   }
 
-  constructor(private dialogRef: MatDialogRef<TodoPopupComponent>,
+  constructor(private readonly dialogRef: MatDialogRef<TodoPopupComponent>,
               @Inject(MAT_DIALOG_DATA) public data: TodoItem | TodoListItem,
               private readonly fb: FormBuilder) {
     this.todoForm = this.fb.group({

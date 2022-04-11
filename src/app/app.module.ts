@@ -13,8 +13,8 @@ import {TodoListComponent} from './components/todo-list/todo-list.component';
 import {EffectsModule} from '@ngrx/effects';
 import {TodoEffects} from './redux/effects/todo.effects';
 import {StoreModule} from "@ngrx/store";
-import {TodoReducer} from "./redux/reducers/todo.reducer";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {metaReducers, reducers} from "./redux";
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({todo: TodoReducer}),
+    StoreModule.forRoot(reducers, {metaReducers}),
     StoreDevtoolsModule.instrument({maxAge: 25}),
     EffectsModule.forRoot([TodoEffects])
   ],

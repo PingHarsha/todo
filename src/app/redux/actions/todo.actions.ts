@@ -9,10 +9,20 @@ export const todoGetAll = createAction(
 export const todoUpdateAll = createAction(
   '[Todo] Todo Create',
   props<{ data: Array<TodoListItem> }>()
-)
+);
+
+export const failedCreateTodo = createAction(
+  '[Todo] Todo Failed To Create Todo',
+  props<{ data: any }>()
+);
+
+export const failedGetAllFetch = createAction(
+  '[Todo] Todo Failed Get All',
+  props<{ data: any }>()
+);
 
 export const todoCreate = createAction(
-  '[Todo] Todo Create',
+  '[Todo] Todo Create todo',
   props<{ data: TodoItem }>()
 );
 
