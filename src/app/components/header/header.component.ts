@@ -17,11 +17,7 @@ export class HeaderComponent {
 
   createTodo(): void {
     const popup = this.dialog.open(TodoPopupComponent, {
-      data: new TodoItem('', ''),
-      maxWidth: '500px',
-      width: '100%',
-      closeOnNavigation: true,
-      disableClose: true
+      data: new TodoItem('', '')
     });
 
     popup.afterClosed().subscribe((data: TodoItem | undefined) => {

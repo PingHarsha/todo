@@ -1,1 +1,8 @@
-<p>todo-list works!</p>
+<section class="todo-list">
+  <ng-container *ngFor="let todo of todoList | async">
+    <mat-card class="todo-item">
+      <mat-card-title>{{todo.title}}</mat-card-title>
+    </mat-card>
+  </ng-container>
+</section>
+

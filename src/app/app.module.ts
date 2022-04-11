@@ -15,13 +15,19 @@ import {TodoEffects} from './redux/effects/todo.effects';
 import {StoreModule} from "@ngrx/store";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {metaReducers, reducers} from "./redux";
+import {HotToastModule} from "@ngneat/hot-toast";
+import {DynamicViewModule} from "@ngneat/overview";
+import {ConfirmationPopupComponent} from './components/popups/confirmation-popup/confirmation-popup.component';
+import {MAT_DIALOG_DEFAULT_OPTIONS} from "@angular/material/dialog";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     TodoPopupComponent,
-    TodoListComponent
+    TodoListComponent,
+    ConfirmationPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +39,22 @@ import {metaReducers, reducers} from "./redux";
     ReactiveFormsModule,
     StoreModule.forRoot(reducers, {metaReducers}),
     StoreDevtoolsModule.instrument({maxAge: 25}),
-    EffectsModule.forRoot([TodoEffects])
+    EffectsModule.forRoot([TodoEffects]),
+    HotToastModule.forRoot({
+      position: 'bottom-right'
+    }),
+    DynamicViewModule,
+    FlexLayoutModule
   ],
-  providers: [],
+  providers: [{
+    provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {
+      maxWidth: '500px',
+      width: '100%',
+      closeOnNavigation: true,
+      disableClose: true,
+      hasBackdrop: true
+    }
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
