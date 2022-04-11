@@ -42,7 +42,7 @@ import {EllipsisModule} from "ngx-ellipsis";
     StoreDevtoolsModule.instrument({maxAge: 25}),
     EffectsModule.forRoot([TodoEffects]),
     HotToastModule.forRoot({
-      position: 'bottom-right'
+      position: 'bottom-center'
     }),
     DynamicViewModule,
     FlexLayoutModule,
@@ -51,7 +51,7 @@ import {EllipsisModule} from "ngx-ellipsis";
   providers: [{
     provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {
       maxWidth: '500px',
-      width: '100%',
+      width: 'calc(100% - 32px)',
       closeOnNavigation: true,
       disableClose: true,
       hasBackdrop: true

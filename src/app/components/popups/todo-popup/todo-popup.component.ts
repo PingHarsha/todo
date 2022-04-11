@@ -31,8 +31,7 @@ export class TodoPopupComponent {
     });
     this.title.patchValue(this.data.title);
     this.description.patchValue(this.data.description);
-
-    if (this.data instanceof TodoListItem) {
+    if ((<TodoListItem>this.data).created_at !== undefined) {
       this.popupType = 'Update';
     }
   }
